@@ -43,21 +43,21 @@ function wc_skip_cart_skip_cart_redirect_checkout($url)
 /*
  * Fix for “Sold Individually” Products
  */
-add_filter('woocommerce_product_add_to_cart_url', 'wc_skip_cart_fix_for_individual_products', 10, 2);
+add_action('woocommerce_add_to_cart_validation', 'wc_skip_cart_woocommerce_add_to_cart_validation', 11, 2);
 
-function wc_skip_cart_fix_for_individual_products($add_to_cart_url, $product)
+function wc_skip_cart_woocommerce_add_to_cart_validation($passed, $product_id)
 {
-
+    $product = wc_get_product($product_id);
     if (
-        $product->get_sold_individually() // if individual product
-        && WC()->cart->find_product_in_cart(WC()->cart->generate_cart_id($product->id)) // if in the cart
-        && $product->is_purchasable() // we also need these two conditions
+        $product->get_sold_individually()                                              // if individual product
+        && WC()->cart->find_product_in_cart(WC()->cart->generate_cart_id($product_id)) // if in the cart
+        && $product->is_purchasable()                                                      // if conditions
         && $product->is_in_stock()
     ) {
-        $add_to_cart_url = wc_get_checkout_url();
+        wp_safe_redirect(wc_get_checkout_url());
+        exit();
     }
-
-    return $add_to_cart_url;
+    return $passed;
 }
 
 /*

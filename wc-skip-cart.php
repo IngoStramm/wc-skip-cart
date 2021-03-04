@@ -4,7 +4,7 @@
  * Plugin Name: Woocommerce Skip Cart
  * Plugin URI: https://agencialaf.com
  * Description: Descrição do Woocommerce Skip Cart.
- * Version: 0.0.2
+ * Version: 0.0.3
  * Author: Ingo Stramm
  * Text Domain: wc-skip-cart
  * License: GPLv2
