@@ -1,7 +1,7 @@
 {
     "name": "wc-skip-cart",
     "description": "Descrição do Woocommerce Skip Cart.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "title": "Woocommerce Skip Cart",
     "homepage": "https://agencialaf.com",
     "main": "Gruntfile.js",
